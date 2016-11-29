@@ -6,6 +6,7 @@ import React from 'react';
 import TodoList from './components/todo-list';
 import Progress from './components/progress';
 import Header from './components/header';
+import CategoryList from './components/category-list';
 
 export default class App extends React.Component {
   render() {
@@ -38,68 +39,7 @@ export default class App extends React.Component {
 
 				<div className="content">
 					<section className="sidebar">
-						<ul className="category-list">
-							<li>
-								<span>
-									Category 1
-									<button className="btn"><i className="fa fa-edit"></i></button>
-								</span>
-								<span className="pull-right">
-									<button className="btn"><i className="fa fa-trash"></i></button>
-									<button className="btn"><i className="fa fa-plus-square-o"></i></button>
-								</span>
-							</li>
-							<li>
-								<span>
-									Category 2
-									<button className="btn"><i className="fa fa-edit"></i></button></span>
-								<span className="pull-right">
-									<button className="btn"><i className="fa fa-trash"></i></button>
-									<button className="btn"><i className="fa fa-plus-square-o"></i></button>
-								</span>
-							</li>
-							<li>
-								<span>
-									<button className="btn arrow"><i className="fa fa-chevron-down"></i></button>
-									Category 3
-									<button className="btn"><i className="fa fa-edit"></i></button></span>
-								<span className="pull-right">
-									<button className="btn"><i className="fa fa-trash"></i></button>
-									<button className="btn"><i className="fa fa-plus-square-o"></i></button>
-								</span>
-
-								<ul className="category-list">
-									<li>
-										<span>
-											Category 3_1
-											<button className="btn"><i className="fa fa-edit"></i></button>
-										</span>
-										<span className="pull-right">
-											<button className="btn"><i className="fa fa-trash"></i></button>
-											<button className="btn"><i className="fa fa-plus-square-o"></i></button>
-										</span>
-									</li>
-									<li>
-										<span>
-											Category 3_2
-											<button className="btn"><i className="fa fa-edit"></i></button></span>
-										<span className="pull-right">
-											<button className="btn"><i className="fa fa-trash"></i></button>
-											<button className="btn"><i className="fa fa-plus-square-o"></i></button>
-										</span>
-									</li>
-									<li>
-										<span>
-											Category 3_3
-											<button className="btn"><i className="fa fa-edit"></i></button></span>
-										<span className="pull-right">
-											<button className="btn"><i className="fa fa-trash"></i></button>
-											<button className="btn"><i className="fa fa-plus-square-o"></i></button>
-										</span>
-									</li>
-								</ul>
-							</li>
-						</ul>
+						<CategoryList></CategoryList>
 					</section>
 					<section className="main-list">
 						<TodoList/>
