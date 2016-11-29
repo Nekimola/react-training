@@ -3,27 +3,16 @@ import 'font-awesome/css/font-awesome.css';
 import styles from './index.scss';
 import React from 'react';
 
+import TodoList from './components/todo-list';
+import Progress from './components/progress';
+import Header from './components/header';
+
 export default class App extends React.Component {
   render() {
     return (
       <div>
-        <header>
-					<h1>To-Do List</h1>
-
-					<div className="checkbox header-item">
-						<label>
-							<input type="checkbox" /> Show active
-						</label>
-					</div>
-					<form action="" className="header-item">
-						<div className="form-group">
-							<input type="text" className="form-control" placeholder="Search"/>
-						</div>
-					</form>
-				</header>
-
-				<progress value={70} max={100}></progress>
-
+        <Header/>
+				<Progress/>
 				<section className="action-holder">
 					<form className="form-inline">
 						<div className="form-group">
@@ -49,7 +38,7 @@ export default class App extends React.Component {
 
 				<div className="content">
 					<section className="sidebar">
-						<ul>
+						<ul className="category-list">
 							<li>
 								<span>
 									Category 1
@@ -79,10 +68,10 @@ export default class App extends React.Component {
 									<button className="btn"><i className="fa fa-plus-square-o"></i></button>
 								</span>
 
-								<ul className="child-list">
+								<ul className="category-list">
 									<li>
 										<span>
-											Category 1
+											Category 3_1
 											<button className="btn"><i className="fa fa-edit"></i></button>
 										</span>
 										<span className="pull-right">
@@ -92,7 +81,7 @@ export default class App extends React.Component {
 									</li>
 									<li>
 										<span>
-											Category 2
+											Category 3_2
 											<button className="btn"><i className="fa fa-edit"></i></button></span>
 										<span className="pull-right">
 											<button className="btn"><i className="fa fa-trash"></i></button>
@@ -101,7 +90,7 @@ export default class App extends React.Component {
 									</li>
 									<li>
 										<span>
-											Category 3
+											Category 3_3
 											<button className="btn"><i className="fa fa-edit"></i></button></span>
 										<span className="pull-right">
 											<button className="btn"><i className="fa fa-trash"></i></button>
@@ -113,33 +102,7 @@ export default class App extends React.Component {
 						</ul>
 					</section>
 					<section className="main-list">
-						<ul className="todo-list">
-							<li>
-								<input type="checkbox"/>
-								<h3>To-do Item #1</h3>
-								<button className="btn pull-right"><i className="fa fa-edit"></i></button>
-							</li>
-							<li>
-								<input type="checkbox"/>
-								<h3>To-do Item #2</h3>
-								<button className="btn pull-right"><i className="fa fa-edit"></i></button>
-							</li>
-							<li>
-								<input type="checkbox"/>
-								<h3>To-do Item #3</h3>
-								<button className="btn pull-right"><i className="fa fa-edit"></i></button>
-							</li>
-							<li>
-								<input type="checkbox"/>
-								<h3>To-do Item #4</h3>
-								<button className="btn pull-right"><i className="fa fa-edit"></i></button>
-							</li>
-							<li>
-								<input type="checkbox"/>
-								<h3>To-do Item #5</h3>
-								<button className="btn pull-right"><i className="fa fa-edit"></i></button>
-							</li>
-						</ul>
+						<TodoList/>
 					</section>
 				</div>
       </div>
