@@ -1,23 +1,58 @@
 {
   "categories": [{
-      "name": "Category 1",
-      "subcategories": []
+    "name": "Category 1",
+    "opened": false,
+    "todos": [{
+        "name": "To-do Item #1",
+        "done": false,
+        "description": ""
+      }, {
+        "name": "To-do Item #2",
+        "done": false,
+        "description": ""
+      }, {
+        "name": "To-do Item #3",
+        "done": false,
+        "description": ""
+      }, {
+        "name": "To-do Item #4",
+        "done": false,
+        "description": ""
+      }]
+  }, {
+    "name": "Category 2",
+    "opened": false,
+    "todos": [{
+        "name": "To-do Item #1123",
+        "done": false,
+        "description": ""
+      }, {
+        "name": "To-do Item #3452",
+        "done": false,
+        "description": ""
+    }]
+  }, {
+    "opened": false,
+    "name": "Category 3"
+  },
+  {
+    "name": "Category 4",
+    "opened": false,
+    "subcategories": [{
+      "name": "Category 4_1",
+      "opened": false,
+      "todos": [{
+        "name": "To-do Item #444",
+        "done": false,
+        "description": ""
+      }, {
+        "name": "To-do Item #555",
+        "done": false,
+        "description": ""
+      }]
     }, {
-      "name": "Category 2",
-      "subcategories": []
-    }, {
-      "name": "Category 3",
-      "subcategories": []
-    },
-    {
-      "name": "Category 4",
-      "subcategories": [
-        {
-          "name": "Category 4_1"
-        },
-        {
-          "name": "Category 4_2"
-        }
-      ]
+      "opened": false,
+      "name": "Category 4_2"
+    }]
   }]
 }

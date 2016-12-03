@@ -7,49 +7,65 @@ import TodoList from './components/todo-list';
 import Progress from './components/progress';
 import Header from './components/header';
 import CategoryList from './components/category-list';
+import AddCategory from './components/add-category';
+import AddTodo from './components/add-todo';
 
-import {todos} from './todos.json';
 import {categories} from './categories.json';
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      categories: categories,
+      todos: categories[0].todos
+    };
+  }
+
+  onCategorySelect (category) {
+    this.setState({
+      todos: category.todos || []
+    });
+  }
+
+  onCategoryToggle (category) {
+    var index = this.state.categories.indexOf(category);
+
+    this.setState({
+      categories: [
+        ...this.state.categories.slice(0, index),
+        Object.assign({}, category, {opened: !category.opened}),
+        ...this.state.categories.slice(index + 1)
+      ]
+    });
+  }
+
   render() {
     return (
       <div>
         <Header/>
 				<Progress/>
 				<section className="action-holder">
-					<form className="form-inline">
-						<div className="form-group">
-							<div className="input-group">
-								<input type="text" className="form-control" id="exampleInputAmount" placeholder="Enter category title" />
-								<div className="input-group-addon">
-									<button type="submit" className="btn" >Add</button>
-								</div>
-							</div>
-						</div>
-					</form>
-					<form className="form-inline">
-						<div className="form-group">
-							<div className="input-group">
-								<input type="text" className="form-control" id="exampleInputAmount" placeholder="Enter category title" />
-								<div className="input-group-addon">
-									<button type="submit" className="btn" >Add</button>
-								</div>
-							</div>
-						</div>
-					</form>
+					<AddCategory/>
+					<AddTodo/>
 				</section>
 
 				<div className="content">
 					<section className="sidebar">
-						<CategoryList categories={categories}></CategoryList>
+            {this.state.categories && this.state.categories.length > 0 &&
+              <CategoryList
+                categories={this.state.categories}
+                onToggle={(category) => this.onCategoryToggle(category)}
+                onSelect={(category) => this.onCategorySelect(category)}></CategoryList>
+            }
 					</section>
 					<section className="main-list">
-						<TodoList todos={todos}/>
+            {this.state.todos && this.state.todos.length > 0 &&
+              <TodoList todos={this.state.todos}/>
+            }
 					</section>
 				</div>
       </div>
-
     )
   }
 }

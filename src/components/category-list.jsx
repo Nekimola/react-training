@@ -1,12 +1,14 @@
 import React from 'react';
 import CategoryListItem from './category-list-item';
 
-const CategoryList = props =>
+const CategoryList = ({ categories, onSelect, onToggle }) =>
         <ul className="category-list">
-          {props.categories.map((category, index)=>
+          {categories.map((category, index)=>
             <CategoryListItem
               key={index}
-              category={category}></CategoryListItem>)}
+              category={category}
+              onSelect={onSelect}
+              onToggle={onToggle}>></CategoryListItem>)}
         </ul>;
 
 export default CategoryList;
