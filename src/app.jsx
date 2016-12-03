@@ -8,6 +8,9 @@ import Progress from './components/progress';
 import Header from './components/header';
 import CategoryList from './components/category-list';
 
+import {todos} from './todos.json';
+import {categories} from './categories.json';
+
 export default class App extends React.Component {
   render() {
     return (
@@ -39,10 +42,10 @@ export default class App extends React.Component {
 
 				<div className="content">
 					<section className="sidebar">
-						<CategoryList></CategoryList>
+						<CategoryList categories={categories}></CategoryList>
 					</section>
 					<section className="main-list">
-						<TodoList/>
+						<TodoList todos={todos}/>
 					</section>
 				</div>
       </div>

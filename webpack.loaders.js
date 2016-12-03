@@ -25,8 +25,6 @@ module.exports = [
 		test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
 		loader: "url?limit=10000&mimetype=image/svg+xml"
 	},
-
-
 	{
 		test: /\.gif/,
 		exclude: /(node_modules|bower_components)/,
@@ -41,5 +39,10 @@ module.exports = [
 		test: /\.png/,
 		exclude: /(node_modules|bower_components)/,
 		loader: "url-loader?limit=10000&mimetype=image/png"
-	}
+	},
+  {
+    test: /\.json$/,
+    exclude: /(node_modules|bower_components)/,
+    loader: 'json'
+  }
 ];
