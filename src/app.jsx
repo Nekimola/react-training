@@ -53,15 +53,15 @@ export default class App extends React.Component {
         <div className="content">
           <section className="sidebar">
             {this.state.categories && this.state.categories.length > 0 &&
-            <CategoryList
-              categories={this.state.categories}
-              onToggle={(category) => this.onCategoryToggle(category)}
-              onSelect={(category) => this.onCategorySelect(category)}></CategoryList>
+              <CategoryList
+                categories={this.state.categories}
+                onToggle={(category) => this.onCategoryToggle(category)}
+                onSelect={(category) => this.onCategorySelect(category)}></CategoryList>
             }
           </section>
           <section className="main-list">
             {this.state.todos && this.state.todos.length > 0 &&
-            <TodoList todos={this.state.todos}/>
+              <TodoList todos={this.state.todos}/>
             }
           </section>
         </div>
