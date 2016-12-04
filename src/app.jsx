@@ -17,7 +17,7 @@ export default class App extends React.Component {
     super(props);
 
     this.state = {
-      categories: categories,
+      categories,
       todos: categories[0].todos
     };
   }
