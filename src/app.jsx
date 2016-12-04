@@ -10,7 +10,7 @@ import CategoryList from './components/category-list';
 import AddCategory from './components/add-category';
 import AddTodo from './components/add-todo';
 
-import {categories} from './categories.json';
+import { categories } from './categories.json';
 
 export default class App extends React.Component {
   constructor(props) {
