@@ -44,27 +44,27 @@ export default class App extends React.Component {
     return (
       <div>
         <Header/>
-				<Progress/>
-				<section className="action-holder">
-					<AddCategory/>
-					<AddTodo/>
-				</section>
+        <Progress/>
+        <section className="action-holder">
+          <AddCategory/>
+          <AddTodo/>
+        </section>
 
-				<div className="content">
-					<section className="sidebar">
+        <div className="content">
+          <section className="sidebar">
             {this.state.categories && this.state.categories.length > 0 &&
-              <CategoryList
-                categories={this.state.categories}
-                onToggle={(category) => this.onCategoryToggle(category)}
-                onSelect={(category) => this.onCategorySelect(category)}></CategoryList>
+            <CategoryList
+              categories={this.state.categories}
+              onToggle={(category) => this.onCategoryToggle(category)}
+              onSelect={(category) => this.onCategorySelect(category)}></CategoryList>
             }
-					</section>
-					<section className="main-list">
+          </section>
+          <section className="main-list">
             {this.state.todos && this.state.todos.length > 0 &&
-              <TodoList todos={this.state.todos}/>
+            <TodoList todos={this.state.todos}/>
             }
-					</section>
-				</div>
+          </section>
+        </div>
       </div>
     )
   }
