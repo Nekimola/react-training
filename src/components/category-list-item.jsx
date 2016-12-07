@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router';
+
 import CategoryList from './category-list'
 
 const CategoryListItem = ({ category, onSelect, onToggle }) =>
@@ -10,10 +12,10 @@ const CategoryListItem = ({ category, onSelect, onToggle }) =>
                  <i className={category.opened ? 'fa fa-chevron-down' : 'fa fa-chevron-right'}></i>
                </button>
              }
-             <a href="#" onClick={() => onSelect(category)}>{category.name}</a>
+             <Link to={`/category/${category.id}`}>{category.name}</Link>
              <button className="btn"><i className="fa fa-edit"></i></button>
            </span>
-             <span className="pull-right">
+           <span className="pull-right">
              <button className="btn"><i className="fa fa-trash"></i></button>
              <button className="btn"><i className="fa fa-plus-square-o"></i></button>
            </span>
@@ -22,6 +24,7 @@ const CategoryListItem = ({ category, onSelect, onToggle }) =>
          {category.subcategories && category.subcategories.length > 0 && category.opened &&
            <CategoryList
              categories={category.subcategories}
+             onToggle={onToggle}
              onSelect={onSelect}></CategoryList>
          }
        </li>;

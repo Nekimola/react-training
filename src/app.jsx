@@ -59,10 +59,9 @@ export default class App extends React.Component {
                 onSelect={(category) => this.onCategorySelect(category)}></CategoryList>
             }
           </section>
+
           <section className="main-list">
-            {this.state.todos && this.state.todos.length > 0 &&
-              <TodoList todos={this.state.todos}/>
-            }
+            {this.props.children}
           </section>
         </div>
       </div>

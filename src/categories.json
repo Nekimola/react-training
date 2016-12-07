@@ -1,5 +1,6 @@
 {
   "categories": [{
+    "id": 0,
     "name": "Category 1",
     "opened": false,
     "todos": [{
@@ -20,6 +21,7 @@
         "description": ""
       }]
   }, {
+    "id": 1,
     "name": "Category 2",
     "opened": false,
     "todos": [{
@@ -32,13 +34,16 @@
         "description": ""
     }]
   }, {
+    "id": 2,
     "opened": false,
     "name": "Category 3"
   },
   {
+    "id": 6,
     "name": "Category 4",
     "opened": false,
     "subcategories": [{
+      "id": 3,
       "name": "Category 4_1",
       "opened": false,
       "todos": [{
@@ -46,13 +51,21 @@
         "done": false,
         "description": ""
       }, {
+        "id": 4,
         "name": "To-do Item #555",
         "done": false,
         "description": ""
       }]
     }, {
+      "id": 5,
       "opened": false,
-      "name": "Category 4_2"
+      "name": "Category 4_2",
+      "subcategories": [{
+        "id": 7,
+        "name": "Some cat",
+        "done": false,
+        "description": ""
+      }]
     }]
   }]
 }
