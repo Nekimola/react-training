@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 import CategoryList from './category-list'
 
-const CategoryListItem = ({ category, onSelect, onToggle }) =>
+const CategoryListItem = ({ category, onToggle }) =>
        <li>
          <div className="category-item">
            <span>
@@ -24,8 +24,7 @@ const CategoryListItem = ({ category, onSelect, onToggle }) =>
          {category.subcategories && category.subcategories.length > 0 && category.opened &&
            <CategoryList
              categories={category.subcategories}
-             onToggle={onToggle}
-             onSelect={onSelect}></CategoryList>
+             onToggle={onToggle}></CategoryList>
          }
        </li>;
 

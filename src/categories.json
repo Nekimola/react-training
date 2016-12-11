@@ -4,18 +4,22 @@
     "name": "Category 1",
     "opened": false,
     "todos": [{
+        "id": 11,
         "name": "To-do Item #1",
         "done": false,
         "description": ""
       }, {
+        "id": 12,
         "name": "To-do Item #2",
-        "done": false,
+        "done": true,
         "description": ""
       }, {
+        "id": 13,
         "name": "To-do Item #3",
-        "done": false,
+        "done": true,
         "description": ""
       }, {
+        "id": 14,
         "name": "To-do Item #4",
         "done": false,
         "description": ""
@@ -25,10 +29,12 @@
     "name": "Category 2",
     "opened": false,
     "todos": [{
+        "id": 15,
         "name": "To-do Item #1123",
         "done": false,
         "description": ""
       }, {
+        "id": 16,
         "name": "To-do Item #3452",
         "done": false,
         "description": ""
@@ -47,11 +53,12 @@
       "name": "Category 4_1",
       "opened": false,
       "todos": [{
+        "id": 17,
         "name": "To-do Item #444",
         "done": false,
         "description": ""
       }, {
-        "id": 4,
+        "id": 18,
         "name": "To-do Item #555",
         "done": false,
         "description": ""

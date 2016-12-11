@@ -40,7 +40,7 @@ export default class TodoList extends React.Component {
   render () {
     return (
       <ul className="todo-list">
-        {this.state.todos.map((todo, index) => <TodoListItem name={todo.name} key={index}></TodoListItem>)}
+        {this.state.todos.map((todo, index) => <TodoListItem todo={todo} key={index}></TodoListItem>)}
       </ul>
     );
   }

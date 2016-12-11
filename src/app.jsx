@@ -17,15 +17,8 @@ export default class App extends React.Component {
     super(props);
 
     this.state = {
-      categories,
-      todos: categories[0].todos
+      categories
     };
-  }
-
-  onCategorySelect (category) {
-    this.setState({
-      todos: category.todos || []
-    });
   }
 
   onCategoryToggle (category) {
@@ -55,8 +48,7 @@ export default class App extends React.Component {
             {this.state.categories && this.state.categories.length > 0 &&
               <CategoryList
                 categories={this.state.categories}
-                onToggle={(category) => this.onCategoryToggle(category)}
-                onSelect={(category) => this.onCategorySelect(category)}></CategoryList>
+                onToggle={(category) => this.onCategoryToggle(category)}></CategoryList>
             }
           </section>
 
