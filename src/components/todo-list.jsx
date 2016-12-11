@@ -2,32 +2,38 @@ import React from 'react';
 import TodoListItem from './todo-list-item';
 import { categories } from '../categories.json';
 
-const findCategory = (categories, id) => {
+const findCategoryById = (categories, id) => {
   let category = categories.find(cat => cat.id === id);
 
   return category || categories.reduce((prev, cat) => {
       const { subcategories } = cat;
       if (subcategories && subcategories.length) {
-        return findCategory(subcategories, id);
+        return findCategoryById(subcategories, id);
       }
     });
+};
+
+const getTodos = function (categoryId) {
+  const category = findCategoryById(categories, parseInt(categoryId));
+  return category && category.todos || [];
 };
 
 export default class TodoList extends React.Component {
   constructor(props) {
     super(props);
 
+    const { categoryId } = this.props.params;
+
     this.state = {
-      todos: []
+      todos: getTodos(categoryId)
     };
   }
 
-  componentWillReceiveProps() {
-    const { categoryId } = this.props.params;
-    const category = findCategory(categories, parseInt(categoryId));
+  componentWillReceiveProps(nextProps) {
+    const { categoryId } = nextProps.params;
 
     this.setState({
-      todos: category && category.todos || []
+      todos: getTodos(categoryId)
     });
   }
 
