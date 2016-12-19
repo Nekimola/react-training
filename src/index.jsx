@@ -5,7 +5,6 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
 import todoApp from './reducers';
-
 import Root from './root';
 
 let store = createStore(todoApp);
@@ -15,7 +14,7 @@ render(
     <Provider store={store}>
       <Root/>
     </Provider>
-  </AppContainer>, document.querySelector("#app"));
+  </AppContainer>, document.querySelector('#app'));
 
 if (module.hot) {
   module.hot.accept('./root.jsx', () => {
@@ -25,7 +24,7 @@ if (module.hot) {
           <Root/>
         </Provider>
       </AppContainer>,
-      document.querySelector("#app")
+      document.querySelector('#app')
     );
   });
 }

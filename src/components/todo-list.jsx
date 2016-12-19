@@ -1,6 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import TodoListItem from './todo-list-item';
-import { categories } from '../categories.json';
 
 const findCategoryById = (categories, id) => {
   let category = categories.find(cat => cat.id === id);
@@ -13,27 +14,29 @@ const findCategoryById = (categories, id) => {
     });
 };
 
-const getTodos = function (categoryId) {
+const getTodos = function (categoryId, categories) {
   const category = findCategoryById(categories, parseInt(categoryId));
   return category && category.todos || [];
 };
 
-export default class TodoList extends React.Component {
+class TodoList extends React.Component {
   constructor(props) {
     super(props);
 
-    const { categoryId } = this.props.params;
+    const { categoryId } = props.params;
+    const { categories } = props;
 
     this.state = {
-      todos: getTodos(categoryId)
+      todos: getTodos(categoryId, categories)
     };
   }
 
   componentWillReceiveProps(nextProps) {
     const { categoryId } = nextProps.params;
+    const { categories } = nextProps;
 
     this.setState({
-      todos: getTodos(categoryId)
+      todos: getTodos(categoryId, categories)
     });
   }
 
@@ -45,3 +48,11 @@ export default class TodoList extends React.Component {
     );
   }
 }
+
+const mapSateToProps = (state) => {
+  return {
+    categories: state.categories
+  };
+};
+
+export default connect(mapSateToProps)(TodoList);

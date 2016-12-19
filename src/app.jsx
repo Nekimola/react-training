@@ -4,7 +4,6 @@ import styles from './index.scss';
 import React from 'react';
 import { connect } from 'react-redux';
 
-import TodoList from './components/todo-list';
 import Progress from './components/progress';
 import Header from './components/header';
 import CategoryList from './components/category-list';
@@ -66,6 +65,4 @@ const mapSateToProps = (state) => {
   };
 };
 
-const AppComponent = connect(mapSateToProps)(App);
-
-export default AppComponent;
+export default connect(mapSateToProps)(App);
