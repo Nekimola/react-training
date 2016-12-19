@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.css';
 import styles from './index.scss';
 import React from 'react';
+import { connect } from 'react-redux';
 
 import TodoList from './components/todo-list';
 import Progress from './components/progress';
@@ -10,14 +11,12 @@ import CategoryList from './components/category-list';
 import AddCategory from './components/add-category';
 import AddTodo from './components/add-todo';
 
-import { categories } from './categories.json';
-
-export default class App extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      categories
+      categories: props.categories
     };
   }
 
@@ -60,3 +59,13 @@ export default class App extends React.Component {
     )
   }
 }
+
+const mapSateToProps = (state) => {
+  return {
+    categories: state.categories
+  };
+};
+
+const AppComponent = connect(mapSateToProps)(App);
+
+export default AppComponent;
