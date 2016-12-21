@@ -14,9 +14,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      categories: props.categories
-    };
+    // this.state = {
+    //   categories: props.categories
+    // };
   }
 
   onCategoryToggle (category) {
@@ -43,9 +43,9 @@ class App extends React.Component {
 
         <div className="content">
           <section className="sidebar">
-            {this.state.categories && this.state.categories.length > 0 &&
+            {this.props.categories && this.props.categories.length > 0 &&
               <CategoryList
-                categories={this.state.categories}
+                categories={this.props.categories}
                 onToggle={(category) => this.onCategoryToggle(category)}></CategoryList>
             }
           </section>

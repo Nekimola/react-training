@@ -7,7 +7,9 @@ import { Provider } from 'react-redux';
 import todoApp from './reducers';
 import Root from './root';
 
-let store = createStore(todoApp);
+// let store = createStore(todoApp);
+const store = createStore(todoApp, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
 
 render(
   <AppContainer>

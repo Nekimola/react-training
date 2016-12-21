@@ -20,6 +20,7 @@ const AddCategory = ({ dispatch }) => {
       <div className="form-group">
         <div className="input-group">
           <input type="text"
+                 autoComplete="off"
                  className="form-control"
                  id="exampleInputAmount"
                  placeholder="Enter category title"
