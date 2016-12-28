@@ -9,14 +9,11 @@ import Header from './components/header';
 import CategoryList from './components/category-list';
 import AddCategory from './components/add-category';
 import AddTodo from './components/add-todo';
+import { addTodoAction, addCategoryAction } from './actions';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-
-    // this.state = {
-    //   categories: props.categories
-    // };
   }
 
   onCategoryToggle (category) {
@@ -31,14 +28,23 @@ class App extends React.Component {
     });
   }
 
+  onCategoryAdd (name) {
+    this.props.dispatch(addCategoryAction(name));
+  }
+
+  onTodoAdd (title) {
+    const { categoryId } = this.props;
+    this.props.dispatch(addTodoAction(title, categoryId));
+  }
+
   render() {
     return (
       <div>
         <Header/>
         <Progress/>
         <section className="action-holder">
-          <AddCategory/>
-          <AddTodo/>
+          <AddCategory onCategoryAdd={(name) => this.onCategoryAdd(name)}/>
+          <AddTodo onTodoAdd={(name) => this.onTodoAdd(name)}/>
         </section>
 
         <div className="content">
@@ -59,9 +65,10 @@ class App extends React.Component {
   }
 }
 
-const mapSateToProps = (state) => {
+const mapSateToProps = (state, ownProps) => {
   return {
-    categories: state.categories
+    categories: state.categories,
+    categoryId: ownProps.params.categoryId
   };
 };
 

@@ -6,7 +6,7 @@ import TodoList from './components/todo-list';
 import EditTodo from './components/edit-todo';
 
 const Root = () =>
-  <Router history={browserHistory} >
+  <Router history={browserHistory}>
     <Route path="/" component={App}>
       <Route path="category/:categoryId" component={TodoList} />
     </Route>

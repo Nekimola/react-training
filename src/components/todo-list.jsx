@@ -14,7 +14,7 @@ const findCategoryById = (categories, id) => {
     });
 };
 
-const getTodos = function (categoryId, categories) {
+const getTodos = (categoryId, categories) => {
   const category = findCategoryById(categories, parseInt(categoryId));
   return category && category.todos || [];
 };

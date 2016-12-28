@@ -1,4 +1,4 @@
-import { categories } from '../categories.json';
+// import { categories } from '../categories.json';
 
 export default (state = [], action) => {
   switch (action.type) {
@@ -7,6 +7,9 @@ export default (state = [], action) => {
         action.payload,
         ...state
       ];
+
+    case 'ADD_TODO':
+      console.log(action.payload);
 
     default:
       return state;
