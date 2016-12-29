@@ -1,8 +1,6 @@
-// import { categories } from '../categories.json';
-
 export default (state = [], action) => {
   switch (action.type) {
-    case 'ADD_CATEGORY':
+    case 'ADD_TODO':
       return [
         action.payload,
         ...state

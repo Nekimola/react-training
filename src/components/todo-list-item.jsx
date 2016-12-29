@@ -8,7 +8,6 @@ const TodoListItem = ({ todo }) =>
           <Link to={`/todo/${todo.id}`}>
             <button className="btn pull-right"><i className="fa fa-edit"></i></button>
           </Link>
-
         </li>;
 
 export default TodoListItem;
