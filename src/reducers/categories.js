@@ -1,4 +1,4 @@
-const getNewState = (state, category, diff) => {
+const updateCategory = (state, category, diff) => {
   const index = state.indexOf(category);
 
   return [
@@ -10,9 +10,17 @@ const getNewState = (state, category, diff) => {
 
 const toggleEditCategory = (state, action, value) => {
   const { category } = action.payload;
-  return getNewState(state, category, {
+  return updateCategory(state, category, {
     isEditing: value
   });
+};
+
+const deleteCategory = (state, category) => {
+  const index = state.indexOf(category);
+  return [
+    ...state.slice(0, index),
+    ...state.slice(index + 1)
+  ];
 };
 
 export default (state = [], action) => {
@@ -30,9 +38,12 @@ export default (state = [], action) => {
       return toggleEditCategory(state, action, false);
 
     case 'EDIT_CATEGORY':
-      return getNewState(state, action.payload.category, {
+      return updateCategory(state, action.payload.category, {
         name: action.payload.name
       });
+
+    case 'DELETE_CATEGORY':
+      return deleteCategory(state, action.payload.category);
 
     default:
       return state;

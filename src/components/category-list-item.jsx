@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 import CategoryList from './category-list'
 
-const CategoryListItem = ({ category, onToggle, onStartEdit, onEdit, onStopEdit }) =>
+const CategoryListItem = ({ category, onToggle, onStartEdit, onEdit, onStopEdit, onDelete }) =>
   <li>
     <div className="category-item">
       <span>
@@ -24,7 +24,7 @@ const CategoryListItem = ({ category, onToggle, onStartEdit, onEdit, onStopEdit 
         <button className="btn" onClick={() => onStartEdit(category)}><i className="fa fa-edit"></i></button>
       </span>
       <span className="pull-right">
-        <button className="btn"><i className="fa fa-trash"></i></button>
+        <button className="btn" onClick={() => onDelete(category)}><i className="fa fa-trash"></i></button>
         <button className="btn"><i className="fa fa-plus-square-o"></i></button>
       </span>
     </div>

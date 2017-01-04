@@ -42,6 +42,15 @@ export const stopEditCategoryAction = (category) => {
   };
 };
 
+export const deleteCategoryAction = (category) => {
+  return {
+    type: 'DELETE_CATEGORY',
+    payload: {
+      category
+    }
+  };
+};
+
 export const addTodoAction = (name, categoryId) => {
   return {
     type: 'ADD_TODO',

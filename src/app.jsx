@@ -14,7 +14,9 @@ import {
   addCategoryAction,
   startEditCategoryAction,
   stopEditCategoryAction,
-  editCategoryAction } from './actions';
+  editCategoryAction,
+  deleteCategoryAction
+} from './actions';
 
 class App extends React.Component {
   constructor(props) {
@@ -54,6 +56,10 @@ class App extends React.Component {
     this.props.dispatch(editCategoryAction(category, name));
   }
 
+  onCategoryDelete (category) {
+    this.props.dispatch(deleteCategoryAction(category));
+  }
+
   render() {
     return (
       <div>
@@ -72,7 +78,8 @@ class App extends React.Component {
                 onToggle={(category) => this.onCategoryToggle(category)}
                 onStartEdit={(category) => this.onCategoryStartEdit(category)}
                 onStopEdit={(category) => this.onCategoryStopEdit(category)}
-                onEdit={(category, name) => this.onCategoryEdit(category, name)}></CategoryList>
+                onEdit={(category, name) => this.onCategoryEdit(category, name)}
+                onDelete={(category) => this.onCategoryDelete(category)}></CategoryList>
             }
           </section>
 
