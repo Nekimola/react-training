@@ -9,7 +9,12 @@ import Header from './components/header';
 import CategoryList from './components/category-list';
 import AddCategory from './components/add-category';
 import AddTodo from './components/add-todo';
-import { addTodoAction, addCategoryAction } from './actions';
+import {
+  addTodoAction,
+  addCategoryAction,
+  startEditCategoryAction,
+  stopEditCategoryAction,
+  editCategoryAction } from './actions';
 
 class App extends React.Component {
   constructor(props) {
@@ -37,6 +42,18 @@ class App extends React.Component {
     this.props.dispatch(addTodoAction(title, categoryId));
   }
 
+  onCategoryStartEdit (category) {
+    this.props.dispatch(startEditCategoryAction(category));
+  }
+
+  onCategoryStopEdit (category) {
+    this.props.dispatch(stopEditCategoryAction(category));
+  }
+
+  onCategoryEdit (category, name) {
+    this.props.dispatch(editCategoryAction(category, name));
+  }
+
   render() {
     return (
       <div>
@@ -52,7 +69,10 @@ class App extends React.Component {
             {this.props.categories && this.props.categories.length > 0 &&
               <CategoryList
                 categories={this.props.categories}
-                onToggle={(category) => this.onCategoryToggle(category)}></CategoryList>
+                onToggle={(category) => this.onCategoryToggle(category)}
+                onStartEdit={(category) => this.onCategoryStartEdit(category)}
+                onStopEdit={(category) => this.onCategoryStopEdit(category)}
+                onEdit={(category, name) => this.onCategoryEdit(category, name)}></CategoryList>
             }
           </section>
 
