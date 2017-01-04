@@ -45,6 +45,12 @@ export default (state = [], action) => {
     case 'DELETE_CATEGORY':
       return deleteCategory(state, action.payload.category);
 
+    case 'TOGGLE_CATEGORY':
+      const { category } = action.payload;
+      return updateCategory(state, category, {
+        opened: !category.opened
+      });
+
     default:
       return state;
   }

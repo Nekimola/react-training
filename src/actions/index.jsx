@@ -1,15 +1,16 @@
 let nextCategoryId = 0;
 let nextTodoId = 0;
 
-export const addCategoryAction = (name) => {
+export const addCategoryAction = (name, parentId) => {
   return {
     type: 'ADD_CATEGORY',
     payload: {
       id: nextCategoryId++,
       name,
-      opened: false,
+      opened: true,
       isEditing: false,
-      todos: []
+      todos: [],
+      parentId: typeof parentId === 'undefined' ? -1 : parentId
     }
   };
 };
@@ -17,6 +18,15 @@ export const addCategoryAction = (name) => {
 export const startEditCategoryAction = (category) => {
   return {
     type: 'START_EDIT_CATEGORY',
+    payload: {
+      category
+    }
+  };
+};
+
+export const toggleCategoryAction = (category) => {
+  return {
+    type: 'TOGGLE_CATEGORY',
     payload: {
       category
     }

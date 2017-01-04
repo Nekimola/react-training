@@ -10,6 +10,7 @@ import CategoryList from './components/category-list';
 import AddCategory from './components/add-category';
 import AddTodo from './components/add-todo';
 import {
+  toggleCategoryAction,
   addTodoAction,
   addCategoryAction,
   startEditCategoryAction,
@@ -24,15 +25,7 @@ class App extends React.Component {
   }
 
   onCategoryToggle (category) {
-    var index = this.state.categories.indexOf(category);
-
-    this.setState({
-      categories: [
-        ...this.state.categories.slice(0, index),
-        Object.assign({}, category, {opened: !category.opened}),
-        ...this.state.categories.slice(index + 1)
-      ]
-    });
+    this.props.dispatch(toggleCategoryAction(category));
   }
 
   onCategoryAdd (name) {
@@ -60,6 +53,10 @@ class App extends React.Component {
     this.props.dispatch(deleteCategoryAction(category));
   }
 
+  onAddSubCategory (category) {
+    this.props.dispatch(addCategoryAction('', category.id));
+  }
+
   render() {
     return (
       <div>
@@ -74,12 +71,13 @@ class App extends React.Component {
           <section className="sidebar">
             {this.props.categories && this.props.categories.length > 0 &&
               <CategoryList
-                categories={this.props.categories}
+                categories={this.props.categories.filter(cat => cat.parentId === -1)}
                 onToggle={(category) => this.onCategoryToggle(category)}
                 onStartEdit={(category) => this.onCategoryStartEdit(category)}
                 onStopEdit={(category) => this.onCategoryStopEdit(category)}
                 onEdit={(category, name) => this.onCategoryEdit(category, name)}
-                onDelete={(category) => this.onCategoryDelete(category)}></CategoryList>
+                onDelete={(category) => this.onCategoryDelete(category)}
+                onAddSubCategory={(category) => this.onAddSubCategory(category)}></CategoryList>
             }
           </section>
 

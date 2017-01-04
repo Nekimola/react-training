@@ -1,7 +1,7 @@
 import React from 'react';
 import CategoryListItem from './category-list-item';
 
-const CategoryList = ({ categories, onToggle, onStartEdit, onEdit, onStopEdit, onDelete }) =>
+const CategoryList = ({ categories, onToggle, onStartEdit, onEdit, onStopEdit, onDelete, onAddSubCategory }) =>
   <ul className="category-list">
     {categories.map((category, index)=>
       <CategoryListItem
@@ -11,7 +11,8 @@ const CategoryList = ({ categories, onToggle, onStartEdit, onEdit, onStopEdit, o
         onEdit={onEdit}
         onStopEdit={onStopEdit}
         onStartEdit={onStartEdit}
-        onDelete={onDelete}>></CategoryListItem>)}
+        onDelete={onDelete}
+        onAddSubCategory={onAddSubCategory}>></CategoryListItem>)}
   </ul>;
 
 export default CategoryList;
