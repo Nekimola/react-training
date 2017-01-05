@@ -73,3 +73,12 @@ export const addTodoAction = (name, categoryId) => {
     }
   };
 };
+
+export const editTodoAction = (todo) => {
+  return {
+    type: 'EDIT_TODO',
+    payload: {
+      todo
+    }
+  };
+};

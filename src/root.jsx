@@ -10,7 +10,7 @@ const Root = () =>
     <Route path="/" component={App}>
       <Route path="category/:categoryId" component={TodoList} />
     </Route>
-    <Route path="/todo/:todoId" component={EditTodo}/>
+    <Route path="/category/:categoryId/:todoId" component={EditTodo}/>
   </Router>;
 
 export default Root;
