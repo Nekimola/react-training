@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 
 import CategoryList from './category-list';
 import { editTodoAction } from '../actions';
@@ -34,6 +35,11 @@ class EditTodo extends React.Component {
   onTodoSave (e) {
     e.preventDefault();
     this.props.dispatch(editTodoAction(this.state.todo));
+    this.redirectToCategory();
+  }
+
+  redirectToCategory () {
+    browserHistory.push(`/category/${this.props.categoryId}`);
   }
 
   render () {
@@ -58,14 +64,17 @@ class EditTodo extends React.Component {
                 <input type="submit"
                        className="btn"
                        value="Save Changes"
-                        onClick={(e) => this.onTodoSave(e)}/>
-                <input type="button" className="btn" value="Cancel"/>
+                       onClick={(e) => this.onTodoSave(e)}/>
+                <input type="button"
+                       className="btn"
+                       value="Cancel"
+                       onClick={() => this.redirectToCategory()}/>
               </div>
               <div className="form-group">
                 <input type="text"
                        className="form-control"
                        value={this.state.todo.name || ''}
-                        onChange={(e) => this.onNameChange(e.target.value)}/>
+                       onChange={(e) => this.onNameChange(e.target.value)}/>
               </div>
               <div className="checkbox">
                 <input type="checkbox"
