@@ -53,7 +53,7 @@ class EditTodo extends React.Component {
           <section className="sidebar">
             {this.props.categories && this.props.categories.length > 0 &&
               <CategoryList
-                categories={this.props.categories}
+                categories={this.props.categories.filter(cat => cat.parentId === -1)}
                 onToggle={(category) => this.onCategoryToggle(category)}></CategoryList>
             }
           </section>

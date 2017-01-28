@@ -72,6 +72,7 @@ class App extends React.Component {
             {this.props.categories && this.props.categories.length > 0 &&
               <CategoryList
                 categories={this.props.categories.filter(cat => cat.parentId === -1)}
+                currentCategoryId={this.props.categoryId}
                 onToggle={(category) => this.onCategoryToggle(category)}
                 onStartEdit={(category) => this.onCategoryStartEdit(category)}
                 onStopEdit={(category) => this.onCategoryStopEdit(category)}

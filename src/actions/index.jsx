@@ -8,7 +8,7 @@ export const addCategoryAction = (name, parentId) => {
       id: nextCategoryId++,
       name,
       opened: true,
-      isEditing: false,
+      isEditing: typeof parentId !== 'undefined',
       todos: [],
       parentId: typeof parentId === 'undefined' ? -1 : parentId
     }

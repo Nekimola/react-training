@@ -76,6 +76,10 @@ progress {
       border-left: 1px solid rgba(0, 0, 0, .15);
       position: relative;
 
+      &.active {
+        background-color: #eef7f9;
+      }
+
       .btn {
         margin-left: 10px;
         padding: 5px 10px;

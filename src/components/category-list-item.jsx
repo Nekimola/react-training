@@ -16,16 +16,19 @@ class CategoryListItem extends React.Component {
   render () {
     const {
       category,
+      currentId,
       onToggle,
       onStartEdit,
       onEdit,
       onStopEdit,
       onDelete,
       onAddSubCategory } = this.props;
+    const activeClass = category.id === parseInt(currentId) ? 'active' : '';
+    const classNames = ['category-item', activeClass].join(' ');
 
     return (
       <li>
-        <div className="category-item">
+        <div className={classNames}>
           <span>
             {this.getSubCategories(category).length > 0 &&
               <button className="btn arrow"
@@ -60,6 +63,7 @@ class CategoryListItem extends React.Component {
         {this.getSubCategories(category).length > 0 && category.opened &&
           <CategoryList
             categories={this.getSubCategories(category)}
+            currentCategoryId={currentId}
             onToggle={onToggle}
             onEdit={onEdit}
             onStopEdit={onStopEdit}
@@ -72,16 +76,9 @@ class CategoryListItem extends React.Component {
   }
 }
 
-const mapSateToProps = (state, ownProps) => {
+const mapSateToProps = (state) => {
   return {
-    categories : state.categories,
-    category   : ownProps.category,
-    onToggle   : ownProps.onToggle,
-    onStartEdit: ownProps.onStartEdit,
-    onEdit     : ownProps.onEdit,
-    onStopEdit : ownProps.onStopEdit,
-    onDelete   : ownProps.onDelete,
-    onAddSubCategory: ownProps.onAddSubCategory,
+    categories : state.categories
   };
 };
 
