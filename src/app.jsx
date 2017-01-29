@@ -16,7 +16,9 @@ import {
   startEditCategoryAction,
   stopEditCategoryAction,
   editCategoryAction,
-  deleteCategoryAction
+  deleteCategoryAction,
+  toggleDoneFilerAction,
+  searchFilterAction
 } from './actions';
 
 class App extends React.Component {
@@ -57,6 +59,14 @@ class App extends React.Component {
     this.props.dispatch(addCategoryAction('', category.id));
   }
 
+  onShowDone () {
+    this.props.dispatch(toggleDoneFilerAction());
+  }
+
+  onSearch (queryString) {
+    this.props.dispatch(searchFilterAction(queryString));
+  }
+
   render() {
     const categoryActions = {
       edit: true,
@@ -66,7 +76,8 @@ class App extends React.Component {
 
     return (
       <div>
-        <Header/>
+        <Header onShowDone={() => this.onShowDone()}
+                onSearch={(value) => this.onSearch(value)}/>
         <Progress value={this.props.progress}/>
         <section className="action-holder">
           <AddCategory onCategoryAdd={(name) => this.onCategoryAdd(name)}/>

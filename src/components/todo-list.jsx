@@ -14,6 +14,8 @@ class TodoList extends React.Component {
 
     return todos
       .filter(todo => todo.categoryId === parseInt(categoryId))
+      .filter(todo => this.props.showDone ? todo.done : true)
+      .filter(todo => todo.name.startsWith(this.props.searchQuery))
       .map((todo, index) => <TodoListItem todo={todo} key={index}></TodoListItem>)
   }
 
@@ -28,7 +30,9 @@ class TodoList extends React.Component {
 
 const mapSateToProps = (state) => {
   return {
-    todos: state.todos
+    todos: state.todos,
+    showDone: state.filters.showDone,
+    searchQuery: state.filters.searchQuery
   };
 };
 

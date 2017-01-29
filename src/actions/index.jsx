@@ -82,3 +82,17 @@ export const editTodoAction = (todo) => {
     }
   };
 };
+
+export const toggleDoneFilerAction = () => {
+  return {
+    type: 'TOGGLE_DONE_FILTER'
+  };
+};
+
+export const searchFilterAction = (searchQuery) => {
+  return {
+    type: 'SEARCH_FILTER',
+    payload: { searchQuery }
+  };
+};
+
