@@ -1,5 +1,5 @@
 import React from 'react';
 
-const Progress = () => <progress value={70} max={100}></progress>;
+const Progress = (props) => <progress value={props.value} max={1}></progress>;
 
 export default Progress;

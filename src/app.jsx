@@ -67,7 +67,7 @@ class App extends React.Component {
     return (
       <div>
         <Header/>
-        <Progress/>
+        <Progress value={this.props.progress}/>
         <section className="action-holder">
           <AddCategory onCategoryAdd={(name) => this.onCategoryAdd(name)}/>
           <AddTodo onTodoAdd={(name) => this.onTodoAdd(name)}/>
@@ -98,10 +98,18 @@ class App extends React.Component {
   }
 }
 
+const getProgress = (categories, todos) => {
+  return categories.filter(category => {
+    const catTodos = todos.filter(todo => todo.categoryId === category.id);
+    return catTodos.length && catTodos.every(todo => todo.done);
+  }).length / categories.length;
+};
+
 const mapSateToProps = (state, ownProps) => {
   return {
     categories: state.categories,
-    categoryId: ownProps.params.categoryId
+    categoryId: ownProps.params.categoryId,
+    progress: getProgress(state.categories, state.todos)
   };
 };
 

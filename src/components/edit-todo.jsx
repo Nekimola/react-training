@@ -79,7 +79,7 @@ class EditTodo extends React.Component {
           </section>
 
           <section className="main-list">
-            <form>
+            <form className="edit-todo">
               <div className="form-group pull-right">
                 <input type="submit"
                        className="btn"
