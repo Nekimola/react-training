@@ -5,7 +5,7 @@ const Header = () =>
           <h1>To-Do List</h1>
           <div className="checkbox header-item">
             <label>
-              <input type="checkbox"/> Show active
+              <input type="checkbox"/> Show done
             </label>
           </div>
           <form action="" className="header-item">

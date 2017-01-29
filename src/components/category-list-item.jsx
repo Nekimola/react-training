@@ -16,12 +16,14 @@ class CategoryListItem extends React.Component {
   render () {
     const {
       category,
+      actions,
       currentId,
       onToggle,
       onStartEdit,
       onEdit,
       onStopEdit,
       onDelete,
+      onMove,
       onAddSubCategory } = this.props;
     const activeClass = category.id === parseInt(currentId) ? 'active' : '';
     const classNames = ['category-item', activeClass].join(' ');
@@ -44,31 +46,45 @@ class CategoryListItem extends React.Component {
             {!category.isEditing &&
               <Link to={`/category/${category.id}`}>{category.name}</Link>
             }
-            <button className="btn" onClick={() => onStartEdit(category)}>
-              <i className="fa fa-edit"></i>
-            </button>
+            {actions.edit &&
+              <button className="btn" onClick={() => onStartEdit(category)}>
+                <i className="fa fa-edit"></i>
+              </button>
+            }
           </span>
           <span className="pull-right">
-            <button className="btn"
-                    onClick={() => onDelete(category)}>
-              <i className="fa fa-trash"></i>
-            </button>
-            <button className="btn"
-                    onClick={() => onAddSubCategory(category)}>
-              <i className="fa fa-plus-square-o"></i>
-            </button>
+            {actions.delete &&
+              <button className="btn"
+                      onClick={() => onDelete(category)}>
+                <i className="fa fa-trash"></i>
+              </button>
+            }
+            {actions.add &&
+              <button className="btn"
+                      onClick={() => onAddSubCategory(category)}>
+                <i className="fa fa-plus-square-o"></i>
+              </button>
+            }
+            {actions.move && category.id !== parseInt(currentId) &&
+              <button className="btn"
+                      onClick={() => onMove(category)}>
+                <i className="fa fa-mail-reply"></i>
+              </button>
+            }
           </span>
         </div>
 
         {this.getSubCategories(category).length > 0 && category.opened &&
           <CategoryList
             categories={this.getSubCategories(category)}
+            actions={actions}
             currentCategoryId={currentId}
             onToggle={onToggle}
             onEdit={onEdit}
             onStopEdit={onStopEdit}
             onStartEdit={onStartEdit}
             onDelete={onDelete}
+            onMove={onMove}
             onAddSubCategory={onAddSubCategory}></CategoryList>
         }
       </li>

@@ -3,14 +3,15 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 
 import CategoryList from './category-list';
-import { editTodoAction } from '../actions';
+import { editTodoAction, toggleCategoryAction } from '../actions';
 
 class EditTodo extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      todo: props.todos.find(todo => todo.id === parseInt(props.todoId))
+      todo: props.todos.find(todo => todo.id === parseInt(props.todoId)),
+      categoryId: props.categoryId
     };
   }
 
@@ -38,11 +39,27 @@ class EditTodo extends React.Component {
     this.redirectToCategory();
   }
 
+  onCategoryToggle (category) {
+    this.props.dispatch(toggleCategoryAction(category));
+  }
+
+  onCategoryMove (category) {
+    const newState = {
+      categoryId: category.id
+    };
+
+    this.setState(newState);
+    this.updateTodo(newState);
+  }
+
   redirectToCategory () {
     browserHistory.push(`/category/${this.props.categoryId}`);
   }
 
   render () {
+    const { categories } = this.props;
+    const categoryActions = { move: true };
+
     return (
       <div>
         <header>
@@ -51,10 +68,13 @@ class EditTodo extends React.Component {
 
         <div className="content">
           <section className="sidebar">
-            {this.props.categories && this.props.categories.length > 0 &&
+            {categories && categories.length > 0 &&
               <CategoryList
-                categories={this.props.categories.filter(cat => cat.parentId === -1)}
-                onToggle={(category) => this.onCategoryToggle(category)}></CategoryList>
+                categories={categories.filter(cat => cat.parentId === -1)}
+                actions={categoryActions}
+                currentCategoryId={this.state.categoryId}
+                onToggle={(category) => this.onCategoryToggle(category)}
+                onMove={(category) => this.onCategoryMove(category)}></CategoryList>
             }
           </section>
 
@@ -83,6 +103,7 @@ class EditTodo extends React.Component {
               </div>
               <textarea className="form-control"
                         cols="30" rows="10"
+                        placeholder="Add description"
                         value={this.state.todo.description || ''}
                         onChange={(e) => this.onDescriptionChange(e.target.value)}></textarea>
             </form>

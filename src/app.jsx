@@ -34,7 +34,7 @@ class App extends React.Component {
 
   onTodoAdd (title) {
     const { categoryId } = this.props;
-    this.props.dispatch(addTodoAction(title, categoryId));
+    this.props.dispatch(addTodoAction(title, parseInt(categoryId)));
   }
 
   onCategoryStartEdit (category) {
@@ -58,6 +58,12 @@ class App extends React.Component {
   }
 
   render() {
+    const categoryActions = {
+      edit: true,
+      add: true,
+      delete: true
+    };
+
     return (
       <div>
         <Header/>
@@ -72,6 +78,7 @@ class App extends React.Component {
             {this.props.categories && this.props.categories.length > 0 &&
               <CategoryList
                 categories={this.props.categories.filter(cat => cat.parentId === -1)}
+                actions={categoryActions}
                 currentCategoryId={this.props.categoryId}
                 onToggle={(category) => this.onCategoryToggle(category)}
                 onStartEdit={(category) => this.onCategoryStartEdit(category)}

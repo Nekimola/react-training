@@ -13,7 +13,7 @@ class TodoList extends React.Component {
     const { todos } = this.props;
 
     return todos
-      .filter(todo => todo.categoryId === categoryId)
+      .filter(todo => todo.categoryId === parseInt(categoryId))
       .map((todo, index) => <TodoListItem todo={todo} key={index}></TodoListItem>)
   }
 
